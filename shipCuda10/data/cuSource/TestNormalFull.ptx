@@ -1,0 +1,219 @@
+	.version 1.4
+	.target sm_10, map_f64_to_f32
+	// compiled with C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../open64/lib//be.exe
+	// nvopencc 4.1 built on 2012-09-25
+
+	//-----------------------------------------------------------
+	// Compiling C:/Users/Denis/AppData/Local/Temp/tmpxft_000017d0_00000000-11_TestNormalFull.cpp3.i (C:/Users/Denis/AppData/Local/Temp/ccBI#.a05296)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_10, Endian:little, Pointer Size:64
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"C:/Users/Denis/AppData/Local/Temp/tmpxft_000017d0_00000000-10_TestNormalFull.cudafe2.gpu"
+	.file	2	"c:\program files (x86)\microsoft visual studio 10.0\vc\include\codeanalysis\sourceannotations.h"
+	.file	3	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\crt/device_runtime.h"
+	.file	4	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\host_defines.h"
+	.file	5	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\builtin_types.h"
+	.file	6	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\device_types.h"
+	.file	7	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\host_defines.h"
+	.file	8	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\driver_types.h"
+	.file	9	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\surface_types.h"
+	.file	10	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\texture_types.h"
+	.file	11	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\vector_types.h"
+	.file	12	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\builtin_types.h"
+	.file	13	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\device_launch_parameters.h"
+	.file	14	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\crt\storage_class.h"
+	.file	15	"cuSource/TestNormalFull.cu"
+	.file	16	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\common_functions.h"
+	.file	17	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\math_functions.h"
+	.file	18	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\math_constants.h"
+	.file	19	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\device_functions.h"
+	.file	20	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_11_atomic_functions.h"
+	.file	21	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_12_atomic_functions.h"
+	.file	22	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_13_double_functions.h"
+	.file	23	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_20_atomic_functions.h"
+	.file	24	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_35_atomic_functions.h"
+	.file	25	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_20_intrinsics.h"
+	.file	26	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_30_intrinsics.h"
+	.file	27	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_35_intrinsics.h"
+	.file	28	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\surface_functions.h"
+	.file	29	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\texture_fetch_functions.h"
+	.file	30	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\texture_indirect_functions.h"
+	.file	31	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\surface_indirect_functions.h"
+	.file	32	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\math_functions_dbl_ptx1.h"
+
+
+	.entry TestNormalFull (
+		.param .u64 __cudaparm_TestNormalFull_point,
+		.param .u64 __cudaparm_TestNormalFull_polygon,
+		.param .u64 __cudaparm_TestNormalFull_nX,
+		.param .u64 __cudaparm_TestNormalFull_nY,
+		.param .u64 __cudaparm_TestNormalFull_nZ,
+		.param .s32 __cudaparm_TestNormalFull_N)
+	{
+	.reg .u16 %rh<4>;
+	.reg .u32 %r<66>;
+	.reg .u64 %rd<31>;
+	.reg .pred %p<5>;
+	.local .align 4 .b8 __cuda___cuda_local_var_134190_5_non_const_xxx_044[12];
+	.local .align 4 .b8 __cuda___cuda_local_var_134191_5_non_const_yyy_1256[12];
+	.local .align 4 .b8 __cuda___cuda_local_var_134192_5_non_const_zzz_2468[12];
+	.loc	15	51	0
+$LDWbegin_TestNormalFull:
+	mov.u16 	%rh1, %ctaid.x;
+	mov.u16 	%rh2, %ntid.x;
+	mul.wide.u16 	%r1, %rh1, %rh2;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm_TestNormalFull_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_0_3842;
+	.loc	15	62	0
+	ld.param.u64 	%rd1, [__cudaparm_TestNormalFull_polygon];
+	mul.lo.s32 	%r5, %r3, 3;
+	cvt.s64.s32 	%rd2, %r5;
+	mul.wide.s32 	%rd3, %r5, 4;
+	add.u64 	%rd4, %rd1, %rd3;
+	ld.global.s32 	%r6, [%rd4+0];
+	ld.param.u64 	%rd5, [__cudaparm_TestNormalFull_point];
+	mul.lo.s32 	%r7, %r6, 3;
+	cvt.s64.s32 	%rd6, %r7;
+	mul.wide.s32 	%rd7, %r7, 4;
+	add.u64 	%rd8, %rd5, %rd7;
+	ld.global.s32 	%r8, [%rd8+0];
+	st.local.s32 	[__cuda___cuda_local_var_134190_5_non_const_xxx_044+0], %r8;
+	.loc	15	63	0
+	ld.global.s32 	%r9, [%rd8+4];
+	st.local.s32 	[__cuda___cuda_local_var_134191_5_non_const_yyy_1256+0], %r9;
+	.loc	15	64	0
+	ld.global.s32 	%r10, [%rd8+8];
+	st.local.s32 	[__cuda___cuda_local_var_134192_5_non_const_zzz_2468+0], %r10;
+	.loc	15	62	0
+	ld.global.s32 	%r11, [%rd4+4];
+	mul.lo.s32 	%r12, %r11, 3;
+	cvt.s64.s32 	%rd9, %r12;
+	mul.wide.s32 	%rd10, %r12, 4;
+	add.u64 	%rd11, %rd5, %rd10;
+	ld.global.s32 	%r13, [%rd11+0];
+	st.local.s32 	[__cuda___cuda_local_var_134190_5_non_const_xxx_044+4], %r13;
+	.loc	15	63	0
+	ld.global.s32 	%r14, [%rd11+4];
+	st.local.s32 	[__cuda___cuda_local_var_134191_5_non_const_yyy_1256+4], %r14;
+	.loc	15	64	0
+	ld.global.s32 	%r15, [%rd11+8];
+	st.local.s32 	[__cuda___cuda_local_var_134192_5_non_const_zzz_2468+4], %r15;
+	.loc	15	62	0
+	ld.global.s32 	%r16, [%rd4+8];
+	mul.lo.s32 	%r17, %r16, 3;
+	cvt.s64.s32 	%rd12, %r17;
+	mul.wide.s32 	%rd13, %r17, 4;
+	add.u64 	%rd14, %rd5, %rd13;
+	ld.global.s32 	%r18, [%rd14+0];
+	st.local.s32 	[__cuda___cuda_local_var_134190_5_non_const_xxx_044+8], %r18;
+	.loc	15	63	0
+	ld.global.s32 	%r19, [%rd14+4];
+	st.local.s32 	[__cuda___cuda_local_var_134191_5_non_const_yyy_1256+8], %r19;
+	.loc	15	64	0
+	ld.global.s32 	%r20, [%rd14+8];
+	st.local.s32 	[__cuda___cuda_local_var_134192_5_non_const_zzz_2468+8], %r20;
+	.loc	15	6	0
+	cvt.s64.s32 	%rd15, %r3;
+	mul.wide.s32 	%rd16, %r3, 4;
+	ld.param.u64 	%rd17, [__cudaparm_TestNormalFull_nX];
+	add.u64 	%rd18, %rd17, %rd16;
+	mov.s32 	%r21, 0;
+	st.global.s32 	[%rd18+0], %r21;
+	.loc	15	7	0
+	ld.param.u64 	%rd19, [__cudaparm_TestNormalFull_nY];
+	add.u64 	%rd20, %rd19, %rd16;
+	mov.s32 	%r22, 0;
+	st.global.s32 	[%rd20+0], %r22;
+	.loc	15	8	0
+	ld.param.u64 	%rd21, [__cudaparm_TestNormalFull_nZ];
+	add.u64 	%rd22, %rd21, %rd16;
+	mov.s32 	%r23, 0;
+	st.global.s32 	[%rd22+0], %r23;
+	mov.s64 	%rd23, 0;
+	mov.s32 	%r24, 0;
+	mov.u64 	%rd24, __cuda___cuda_local_var_134192_5_non_const_zzz_2468;
+	mov.u64 	%rd25, __cuda___cuda_local_var_134190_5_non_const_xxx_044;
+	mov.u64 	%rd26, __cuda___cuda_local_var_134191_5_non_const_yyy_1256;
+$Lt_0_4866:
+ //<loop> Loop body line 8, nesting depth: 1, iterations: 3
+	add.u64 	%rd27, %rd23, %rd24;
+	add.u64 	%rd28, %rd23, %rd26;
+	add.u64 	%rd29, %rd23, %rd25;
+	ld.local.s32 	%r25, [%rd27+0];
+	ld.local.s32 	%r26, [%rd28+0];
+	ld.local.s32 	%r27, [%rd29+0];
+	ld.global.s32 	%r28, [%rd18+0];
+	mov.u32 	%r29, 1;
+	setp.gt.s32 	%p2, %r24, %r29;
+	@%p2 bra 	$Lt_0_5378;
+	.loc	15	12	0
+	ld.local.s32 	%r30, [%rd27+4];
+	ld.local.s32 	%r31, [%rd28+4];
+	add.s32 	%r32, %r25, %r30;
+	sub.s32 	%r33, %r31, %r26;
+	mul.lo.s32 	%r34, %r32, %r33;
+	add.s32 	%r35, %r28, %r34;
+	st.global.s32 	[%rd18+0], %r35;
+	.loc	15	13	0
+	ld.local.s32 	%r36, [%rd29+4];
+	ld.global.s32 	%r37, [%rd20+0];
+	add.s32 	%r38, %r27, %r36;
+	sub.s32 	%r39, %r30, %r25;
+	mul.lo.s32 	%r40, %r38, %r39;
+	add.s32 	%r41, %r37, %r40;
+	st.global.s32 	[%rd20+0], %r41;
+	.loc	15	14	0
+	ld.global.s32 	%r42, [%rd22+0];
+	add.s32 	%r43, %r26, %r31;
+	sub.s32 	%r44, %r36, %r27;
+	mul.lo.s32 	%r45, %r43, %r44;
+	add.s32 	%r46, %r42, %r45;
+	st.global.s32 	[%rd22+0], %r46;
+	bra.uni 	$Lt_0_5122;
+$Lt_0_5378:
+	.loc	15	17	0
+	ld.local.s32 	%r47, [__cuda___cuda_local_var_134192_5_non_const_zzz_2468+0];
+	ld.local.s32 	%r48, [__cuda___cuda_local_var_134191_5_non_const_yyy_1256+0];
+	add.s32 	%r49, %r25, %r47;
+	sub.s32 	%r50, %r48, %r26;
+	mul.lo.s32 	%r51, %r49, %r50;
+	add.s32 	%r52, %r28, %r51;
+	st.global.s32 	[%rd18+0], %r52;
+	.loc	15	18	0
+	ld.local.s32 	%r53, [__cuda___cuda_local_var_134190_5_non_const_xxx_044+0];
+	ld.global.s32 	%r54, [%rd20+0];
+	add.s32 	%r55, %r27, %r53;
+	sub.s32 	%r56, %r47, %r25;
+	mul.lo.s32 	%r57, %r55, %r56;
+	add.s32 	%r58, %r54, %r57;
+	st.global.s32 	[%rd20+0], %r58;
+	.loc	15	19	0
+	ld.global.s32 	%r59, [%rd22+0];
+	add.s32 	%r60, %r26, %r48;
+	sub.s32 	%r61, %r53, %r27;
+	mul.lo.s32 	%r62, %r60, %r61;
+	add.s32 	%r63, %r59, %r62;
+	st.global.s32 	[%rd22+0], %r63;
+$Lt_0_5122:
+	add.s32 	%r24, %r24, 1;
+	add.u64 	%rd23, %rd23, 4;
+	mov.u32 	%r64, 3;
+	setp.ne.s32 	%p3, %r24, %r64;
+	@%p3 bra 	$Lt_0_4866;
+$Lt_0_3842:
+	.loc	15	81	0
+	exit;
+$LDWend_TestNormalFull:
+	} // TestNormalFull
+

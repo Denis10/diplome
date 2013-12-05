@@ -1,0 +1,341 @@
+	.version 1.4
+	.target sm_10, map_f64_to_f32
+	// compiled with C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../open64/lib//be.exe
+	// nvopencc 4.1 built on 2012-09-25
+
+	//-----------------------------------------------------------
+	// Compiling C:/Users/Denis/AppData/Local/Temp/tmpxft_00000d6c_00000000-11_obtainPolygonsSteps.cpp3.i (C:/Users/Denis/AppData/Local/Temp/ccBI#.a03284)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_10, Endian:little, Pointer Size:64
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"C:/Users/Denis/AppData/Local/Temp/tmpxft_00000d6c_00000000-10_obtainPolygonsSteps.cudafe2.gpu"
+	.file	2	"c:\program files (x86)\microsoft visual studio 10.0\vc\include\codeanalysis\sourceannotations.h"
+	.file	3	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\crt/device_runtime.h"
+	.file	4	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\host_defines.h"
+	.file	5	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\builtin_types.h"
+	.file	6	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\device_types.h"
+	.file	7	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\host_defines.h"
+	.file	8	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\driver_types.h"
+	.file	9	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\surface_types.h"
+	.file	10	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\texture_types.h"
+	.file	11	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\vector_types.h"
+	.file	12	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\builtin_types.h"
+	.file	13	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\device_launch_parameters.h"
+	.file	14	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\crt\storage_class.h"
+	.file	15	"cuSource/obtainPolygonsSteps.cu"
+	.file	16	"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\/../include\common_functions.h"
+	.file	17	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\math_functions.h"
+	.file	18	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\math_constants.h"
+	.file	19	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\device_functions.h"
+	.file	20	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_11_atomic_functions.h"
+	.file	21	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_12_atomic_functions.h"
+	.file	22	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_13_double_functions.h"
+	.file	23	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_20_atomic_functions.h"
+	.file	24	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_35_atomic_functions.h"
+	.file	25	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_20_intrinsics.h"
+	.file	26	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_30_intrinsics.h"
+	.file	27	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\sm_35_intrinsics.h"
+	.file	28	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\surface_functions.h"
+	.file	29	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\texture_fetch_functions.h"
+	.file	30	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\texture_indirect_functions.h"
+	.file	31	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\surface_indirect_functions.h"
+	.file	32	"c:\program files\nvidia gpu computing toolkit\cuda\v5.0\include\math_functions_dbl_ptx1.h"
+
+
+	.entry obtainPolygonsSteps (
+		.param .u64 __cudaparm_obtainPolygonsSteps_dev_S,
+		.param .u64 __cudaparm_obtainPolygonsSteps_dev_polygonToFillX,
+		.param .u64 __cudaparm_obtainPolygonsSteps_dev_polygonToFillY,
+		.param .u64 __cudaparm_obtainPolygonsSteps_dev_shipLocationX,
+		.param .u64 __cudaparm_obtainPolygonsSteps_dev_shipLocationZ,
+		.param .u64 __cudaparm_obtainPolygonsSteps_dev_matrixC,
+		.param .u64 __cudaparm_obtainPolygonsSteps_dev_points,
+		.param .u64 __cudaparm_obtainPolygonsSteps_dev_polygons,
+		.param .u64 __cudaparm_obtainPolygonsSteps_dev_normals,
+		.param .s32 __cudaparm_obtainPolygonsSteps_N)
+	{
+	.reg .u32 %r<61>;
+	.reg .u64 %rd<54>;
+	.reg .f32 %f<75>;
+	.reg .pred %p<8>;
+	.local .align 4 .b8 __cuda___cuda_local_var_134144_9_non_const_observerCoord_1676[696];
+	.local .align 4 .b8 __cuda___cuda_local_var_134178_7_non_const_xp_712772[232];
+	.local .align 4 .b8 __cuda___cuda_local_var_134179_7_non_const_yp_9441004[232];
+	.local .align 4 .b8 __cuda___cuda_local_var_134184_9_non_const_NormalObs_11761236[1152];
+	.loc	15	6	0
+$LDWbegin_obtainPolygonsSteps:
+	cvt.s32.u16 	%r1, %tid.x;
+	ld.param.s32 	%r2, [__cudaparm_obtainPolygonsSteps_N];
+	setp.le.s32 	%p1, %r2, %r1;
+	@%p1 bra 	$Lt_0_6914;
+	mov.s32 	%r3, 0;
+	cvt.s64.s32 	%rd1, %r1;
+	mul.wide.s32 	%rd2, %r1, 4;
+	ld.param.u64 	%rd3, [__cudaparm_obtainPolygonsSteps_dev_shipLocationX];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.param.u64 	%rd5, [__cudaparm_obtainPolygonsSteps_dev_shipLocationZ];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.param.u64 	%rd7, [__cudaparm_obtainPolygonsSteps_dev_points];
+	mov.u64 	%rd8, __cuda___cuda_local_var_134144_9_non_const_observerCoord_1676;
+	ld.param.u64 	%rd9, [__cudaparm_obtainPolygonsSteps_dev_matrixC];
+$Lt_0_7938:
+ //<loop> Loop body line 6, nesting depth: 1, iterations: 58
+	ld.param.u64 	%rd9, [__cudaparm_obtainPolygonsSteps_dev_matrixC];
+	.loc	15	13	0
+	ld.global.f32 	%f1, [%rd9+12];
+	ld.global.s32 	%r4, [%rd4+0];
+	ld.global.s32 	%r5, [%rd7+0];
+	add.s32 	%r6, %r4, %r5;
+	cvt.rn.f32.s32 	%f2, %r6;
+	ld.global.f32 	%f3, [%rd9+0];
+	mul.f32 	%f4, %f2, %f3;
+	ld.global.s32 	%r7, [%rd7+4];
+	cvt.rn.f32.s32 	%f5, %r7;
+	ld.global.f32 	%f6, [%rd9+4];
+	mad.f32 	%f7, %f5, %f6, %f4;
+	ld.global.s32 	%r8, [%rd6+0];
+	ld.global.s32 	%r9, [%rd7+8];
+	add.s32 	%r10, %r8, %r9;
+	cvt.rn.f32.s32 	%f8, %r10;
+	ld.global.f32 	%f9, [%rd9+8];
+	mad.f32 	%f10, %f8, %f9, %f7;
+	add.f32 	%f11, %f1, %f10;
+	st.local.f32 	[%rd8+0], %f11;
+	.loc	15	15	0
+	ld.global.f32 	%f12, [%rd9+28];
+	ld.global.s32 	%r11, [%rd4+0];
+	ld.global.s32 	%r12, [%rd7+0];
+	add.s32 	%r13, %r11, %r12;
+	cvt.rn.f32.s32 	%f13, %r13;
+	ld.global.f32 	%f14, [%rd9+16];
+	mul.f32 	%f15, %f13, %f14;
+	ld.global.s32 	%r14, [%rd7+4];
+	cvt.rn.f32.s32 	%f16, %r14;
+	ld.global.f32 	%f17, [%rd9+20];
+	mad.f32 	%f18, %f16, %f17, %f15;
+	ld.global.s32 	%r15, [%rd6+0];
+	ld.global.s32 	%r16, [%rd7+8];
+	add.s32 	%r17, %r15, %r16;
+	cvt.rn.f32.s32 	%f19, %r17;
+	ld.global.f32 	%f20, [%rd9+24];
+	mad.f32 	%f21, %f19, %f20, %f18;
+	add.f32 	%f22, %f12, %f21;
+	st.local.f32 	[%rd8+4], %f22;
+	.loc	15	17	0
+	ld.global.f32 	%f23, [%rd9+44];
+	ld.global.s32 	%r18, [%rd4+0];
+	ld.global.s32 	%r19, [%rd7+0];
+	add.s32 	%r20, %r18, %r19;
+	cvt.rn.f32.s32 	%f24, %r20;
+	ld.global.f32 	%f25, [%rd9+32];
+	mul.f32 	%f26, %f24, %f25;
+	ld.global.s32 	%r21, [%rd7+4];
+	cvt.rn.f32.s32 	%f27, %r21;
+	ld.global.f32 	%f28, [%rd9+36];
+	mad.f32 	%f29, %f27, %f28, %f26;
+	ld.global.s32 	%r22, [%rd6+0];
+	ld.global.s32 	%r23, [%rd7+8];
+	add.s32 	%r24, %r22, %r23;
+	cvt.rn.f32.s32 	%f30, %r24;
+	ld.global.f32 	%f31, [%rd9+40];
+	mad.f32 	%f32, %f30, %f31, %f29;
+	add.f32 	%f33, %f23, %f32;
+	st.local.f32 	[%rd8+8], %f33;
+	add.s32 	%r3, %r3, 3;
+	add.u64 	%rd8, %rd8, 12;
+	add.u64 	%rd7, %rd7, 12;
+	mov.u32 	%r25, 174;
+	setp.ne.s32 	%p2, %r3, %r25;
+	@%p2 bra 	$Lt_0_7938;
+	mov.s32 	%r26, 0;
+	mov.u64 	%rd10, __cuda___cuda_local_var_134178_7_non_const_xp_712772;
+	mov.u64 	%rd11, __cuda___cuda_local_var_134179_7_non_const_yp_9441004;
+	mov.u64 	%rd12, __cuda___cuda_local_var_134144_9_non_const_observerCoord_1676;
+$Lt_0_8962:
+ //<loop> Loop body line 17, nesting depth: 1, iterations: 58
+	.loc	15	48	0
+	ld.local.f32 	%f34, [%rd12+8];
+	mov.f32 	%f35, 0f43d0cccd;    	// 417.6
+	mul.f32 	%f36, %f34, %f35;
+	ld.local.f32 	%f37, [%rd12+0];
+	div.full.f32 	%f38, %f36, %f37;
+	cvt.rzi.s32.f32 	%r27, %f38;
+	add.s32 	%r28, %r27, 350;
+	st.local.s32 	[%rd10+0], %r28;
+	.loc	15	49	0
+	ld.local.f32 	%f39, [%rd12+4];
+	mov.f32 	%f40, 0f43d0cccd;    	// 417.6
+	mul.f32 	%f41, %f39, %f40;
+	div.full.f32 	%f42, %f41, %f37;
+	cvt.rzi.s32.f32 	%r29, %f42;
+	mov.s32 	%r30, 350;
+	sub.s32 	%r31, %r30, %r29;
+	st.local.s32 	[%rd11+0], %r31;
+	add.u64 	%rd11, %rd11, 4;
+	add.u64 	%rd10, %rd10, 4;
+	add.s32 	%r26, %r26, 3;
+	add.u64 	%rd12, %rd12, 12;
+	mov.u32 	%r32, 174;
+	setp.ne.s32 	%p3, %r26, %r32;
+	@%p3 bra 	$Lt_0_8962;
+	.loc	15	6	0
+	ld.param.u64 	%rd9, [__cudaparm_obtainPolygonsSteps_dev_matrixC];
+	.loc	15	49	0
+	ld.global.f32 	%f43, [%rd9+0];
+	ld.global.f32 	%f44, [%rd9+4];
+	ld.global.f32 	%f45, [%rd9+8];
+	ld.global.f32 	%f46, [%rd9+16];
+	ld.global.f32 	%f47, [%rd9+20];
+	ld.global.f32 	%f48, [%rd9+24];
+	ld.global.f32 	%f49, [%rd9+32];
+	ld.global.f32 	%f50, [%rd9+36];
+	ld.global.f32 	%f51, [%rd9+40];
+	mov.s32 	%r33, 0;
+	ld.param.u64 	%rd13, [__cudaparm_obtainPolygonsSteps_dev_normals];
+	mov.u64 	%rd14, __cuda___cuda_local_var_134184_9_non_const_NormalObs_11761236;
+$Lt_0_9986:
+ //<loop> Loop body line 49, nesting depth: 1, iterations: 96
+	.loc	15	53	0
+	ld.global.s32 	%r34, [%rd13+4];
+	ld.global.s32 	%r35, [%rd13+0];
+	ld.global.s32 	%r36, [%rd13+8];
+	cvt.rn.f32.s32 	%f52, %r34;
+	cvt.rn.f32.s32 	%f53, %r35;
+	cvt.rn.f32.s32 	%f54, %r36;
+	mul.f32 	%f55, %f44, %f52;
+	mad.f32 	%f56, %f53, %f43, %f55;
+	mad.f32 	%f57, %f54, %f45, %f56;
+	st.local.f32 	[%rd14+0], %f57;
+	.loc	15	55	0
+	mul.f32 	%f58, %f47, %f52;
+	mad.f32 	%f59, %f53, %f46, %f58;
+	mad.f32 	%f60, %f54, %f48, %f59;
+	st.local.f32 	[%rd14+4], %f60;
+	.loc	15	57	0
+	mul.f32 	%f61, %f50, %f52;
+	mad.f32 	%f62, %f53, %f49, %f61;
+	mad.f32 	%f63, %f54, %f51, %f62;
+	st.local.f32 	[%rd14+8], %f63;
+	add.s32 	%r33, %r33, 3;
+	add.u64 	%rd14, %rd14, 12;
+	add.u64 	%rd13, %rd13, 12;
+	mov.u32 	%r37, 288;
+	setp.ne.s32 	%p4, %r33, %r37;
+	@%p4 bra 	$Lt_0_9986;
+	mov.s32 	%r38, 0;
+	ld.param.u64 	%rd15, [__cudaparm_obtainPolygonsSteps_dev_polygons];
+	mov.s64 	%rd16, %rd15;
+	mov.u64 	%rd17, __cuda___cuda_local_var_134184_9_non_const_NormalObs_11761236;
+	ld.param.u64 	%rd18, [__cudaparm_obtainPolygonsSteps_dev_S];
+	mul24.lo.s32 	%r39, %r1, 96;
+	cvt.s64.s32 	%rd19, %r39;
+	mul.wide.s32 	%rd20, %r39, 4;
+	add.u64 	%rd21, %rd18, %rd20;
+	mov.u64 	%rd22, __cuda___cuda_local_var_134144_9_non_const_observerCoord_1676;
+$Lt_0_11010:
+ //<loop> Loop body line 57, nesting depth: 1, iterations: 96
+	.loc	15	61	0
+	ld.global.s32 	%r40, [%rd16+0];
+	mul.lo.s32 	%r41, %r40, 3;
+	cvt.s64.s32 	%rd23, %r41;
+	mul.wide.s32 	%rd24, %r41, 4;
+	add.u64 	%rd25, %rd22, %rd24;
+	ld.local.f32 	%f64, [%rd17+0];
+	ld.local.f32 	%f65, [%rd25+0];
+	mul.f32 	%f66, %f64, %f65;
+	ld.local.f32 	%f67, [%rd25+4];
+	ld.local.f32 	%f68, [%rd17+4];
+	mad.f32 	%f69, %f67, %f68, %f66;
+	ld.local.f32 	%f70, [%rd25+8];
+	ld.local.f32 	%f71, [%rd17+8];
+	mad.f32 	%f72, %f70, %f71, %f69;
+	mov.f32 	%f73, 0f00000000;    	// 0
+	set.lt.u32.f32 	%r42, %f72, %f73;
+	neg.s32 	%r43, %r42;
+	st.global.s32 	[%rd21+0], %r43;
+	add.u64 	%rd21, %rd21, 4;
+	add.s32 	%r38, %r38, 3;
+	add.u64 	%rd17, %rd17, 12;
+	add.u64 	%rd16, %rd16, 12;
+	mov.u32 	%r44, 288;
+	setp.ne.s32 	%p5, %r38, %r44;
+	@%p5 bra 	$Lt_0_11010;
+	mul.lo.s32 	%r45, %r1, 288;
+	mov.s32 	%r46, %r45;
+	add.s32 	%r47, %r45, 288;
+	.loc	15	57	0
+	ld.param.u64 	%rd15, [__cudaparm_obtainPolygonsSteps_dev_polygons];
+	.loc	15	61	0
+	mov.s64 	%rd26, %rd15;
+	cvt.s64.s32 	%rd27, %r45;
+	mul.wide.s32 	%rd28, %r45, 4;
+	ld.param.u64 	%rd29, [__cudaparm_obtainPolygonsSteps_dev_polygonToFillX];
+	add.u64 	%rd30, %rd29, %rd28;
+	ld.param.u64 	%rd31, [__cudaparm_obtainPolygonsSteps_dev_polygonToFillY];
+	add.u64 	%rd32, %rd31, %rd28;
+	mov.u64 	%rd33, __cuda___cuda_local_var_134179_7_non_const_yp_9441004;
+	mov.u64 	%rd34, __cuda___cuda_local_var_134178_7_non_const_xp_712772;
+$Lt_0_12034:
+ //<loop> Loop body line 61, nesting depth: 1, iterations: 96
+	.loc	15	74	0
+	ld.global.s32 	%r48, [%rd26+0];
+	cvt.s64.s32 	%rd35, %r48;
+	mul.wide.s32 	%rd36, %r48, 4;
+	add.u64 	%rd37, %rd34, %rd36;
+	ld.local.s32 	%r49, [%rd37+0];
+	st.global.s32 	[%rd30+0], %r49;
+	.loc	15	75	0
+	ld.global.s32 	%r50, [%rd26+4];
+	cvt.s64.s32 	%rd38, %r50;
+	mul.wide.s32 	%rd39, %r50, 4;
+	add.u64 	%rd40, %rd34, %rd39;
+	ld.local.s32 	%r51, [%rd40+0];
+	st.global.s32 	[%rd30+4], %r51;
+	.loc	15	76	0
+	ld.global.s32 	%r52, [%rd26+8];
+	cvt.s64.s32 	%rd41, %r52;
+	mul.wide.s32 	%rd42, %r52, 4;
+	add.u64 	%rd43, %rd34, %rd42;
+	ld.local.s32 	%r53, [%rd43+0];
+	st.global.s32 	[%rd30+8], %r53;
+	.loc	15	77	0
+	ld.global.s32 	%r54, [%rd26+0];
+	cvt.s64.s32 	%rd44, %r54;
+	mul.wide.s32 	%rd45, %r54, 4;
+	add.u64 	%rd46, %rd33, %rd45;
+	ld.local.s32 	%r55, [%rd46+0];
+	st.global.s32 	[%rd32+0], %r55;
+	.loc	15	78	0
+	ld.global.s32 	%r56, [%rd26+4];
+	cvt.s64.s32 	%rd47, %r56;
+	mul.wide.s32 	%rd48, %r56, 4;
+	add.u64 	%rd49, %rd33, %rd48;
+	ld.local.s32 	%r57, [%rd49+0];
+	st.global.s32 	[%rd32+4], %r57;
+	.loc	15	79	0
+	ld.global.s32 	%r58, [%rd26+8];
+	cvt.s64.s32 	%rd50, %r58;
+	mul.wide.s32 	%rd51, %r58, 4;
+	add.u64 	%rd52, %rd33, %rd51;
+	ld.local.s32 	%r59, [%rd52+0];
+	st.global.s32 	[%rd32+8], %r59;
+	add.s32 	%r46, %r46, 3;
+	add.u64 	%rd32, %rd32, 12;
+	add.u64 	%rd30, %rd30, 12;
+	add.u64 	%rd26, %rd26, 12;
+	setp.ne.s32 	%p6, %r46, %r47;
+	@%p6 bra 	$Lt_0_12034;
+$Lt_0_6914:
+	.loc	15	82	0
+	exit;
+$LDWend_obtainPolygonsSteps:
+	} // obtainPolygonsSteps
+
